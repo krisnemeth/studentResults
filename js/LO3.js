@@ -4,9 +4,11 @@ let studentNames = [];
 
 let studentMarks = [];
 
+
+
 // setting up Add button
 document.getElementById('Add').addEventListener('click', function(){
-    let name = document.getElementById('name').value.trim();
+    let name = document.getElementById('name').value;
     let mark = Number(document.getElementById('mark').value);
 
     if (!name) {
@@ -33,33 +35,26 @@ document.getElementById('Add').addEventListener('click', function(){
 })
 
 
-
-
-
-
-
 // setting up display button
-function Display(names, marks) {
-    console.log('btn clikd')
-    
-    let allStudentNames = '';
-
-    for (i=0; i<names.length; i++) {
-        allStudentNames += (names[i] + marks[i]
-    }
-
-    return allStudentNames;
-}
-
 document.getElementById('Display').addEventListener('click', function(){
-    document.getElementById('result').innerHTML = `${Display(studentNames)}`
+
+    let nameToFind = ;
+
+    // clearing the output
+    document.getElementById('result').innerHTML = '';
+
+    if (studentNames.includes(nameToFind)) {
+        console.log(nameToFind)
+        for (let name in studentNames) {
+            document.getElementById('result').innerHTML = `<h3>Student Results</h3>`
+            document.getElementById('result').innerHTML += `Student: ${studentNames[name]} - ${studentMarks[name]} <br>`
+        }
+        
+    } else {
+        document.getElementById('result').innerHTML = `No results to display.`
+    }
+    
 })
-
-
-
-
-
-
 
 
 // setting up clear button
