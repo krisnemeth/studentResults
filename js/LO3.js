@@ -6,7 +6,7 @@ let studentMarks = [];
 
 // setting up Add button
 document.getElementById('Add').addEventListener('click', function(){
-    let name = document.getElementById('name').value.trim().toLowerCase();
+    let name = document.getElementById('name').value.trim();
     let mark = Number(document.getElementById('mark').value);
 
     if (!name) {
@@ -19,26 +19,48 @@ document.getElementById('Add').addEventListener('click', function(){
         studentNames.push(name);
         studentMarks.push(mark);
 
-        document.getElementById('name').value = '';
-        document.getElementById('mark').value = '';
+       
 
-        document.getElementById('result').innerHTML = ` ${name}'s performance has been recorded!`
+        document.getElementById('result').innerHTML = ` ${name}'s performance has been recorded!`;
+
+        
 
         console.log(studentNames);
         console.log(studentMarks);
     }
+
+    
 })
+
+
+
+
+
+
 
 // setting up display button
-document.getElementById('Display').addEventListener('click', function(){
+function Display(names, marks) {
+    console.log('btn clikd')
     
+    let allStudentNames = '';
 
+    for (i=0; i<names.length; i++) {
+        allStudentNames += (names[i] + marks[i]
+    }
 
+    return allStudentNames;
+}
 
-
-
-
+document.getElementById('Display').addEventListener('click', function(){
+    document.getElementById('result').innerHTML = `${Display(studentNames)}`
 })
+
+
+
+
+
+
+
 
 // setting up clear button
 document.getElementById('Clear').addEventListener('click', function(){
@@ -53,3 +75,23 @@ document.getElementById('Clear').addEventListener('click', function(){
     console.log(studentNames);
     console.log(studentMarks);
 })
+
+// setting up calcAverage
+function calcAverage(numbers){
+    // setting up a variable to store the total in
+    let total = 0;
+
+    // looping through the array
+    for (i=0; i<numbers.length; i++) {
+        // updating the total variable's value at every iteration
+        total += numbers[i];
+    }
+
+    // returning the value of total
+    return (total / studentMarks[i]);
+}
+// event listener attached to a button click using an anonymus function
+document.getElementById('Average').addEventListener('click', function(){
+    // writing out the total into the DOM passing the array of numbers as parameter
+    document.getElementById('result').innerHTML = `${calcAverage(studentMarks)}`
+});
