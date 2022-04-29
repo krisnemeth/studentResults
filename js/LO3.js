@@ -7,7 +7,6 @@ document.getElementById('Add').addEventListener('click', function(){
     // getting input data of names and marks, converting marks to a number straight away
     let name = document.getElementById('name').value;
     let mark = Number(document.getElementById('mark').value);
-
     // checking for conditions
     if (!name) {
         // if there's no name data, error msg is displayed
@@ -46,7 +45,7 @@ document.getElementById('Display').addEventListener('click', function(){
     } else {
         // if there is data, looping through it and writing it out to the DOM
         for (i=0; i<studentNames.length; i++) {
-            document.getElementById('result').innerHTML += `Student: ${studentNames[i]} - Mark: ${studentMarks[i]} <br>`;
+            document.getElementById('result').innerHTML += `Name: ${studentNames[i]} - Mark: ${studentMarks[i]} <br>`;
         }
     }
     
@@ -69,18 +68,21 @@ document.getElementById('Clear').addEventListener('click', function(){
 function calcAverage(numbers){
     // setting up a variable to store the total in
     let total = 0;
-
     // looping through the array
     for (i=0; i<numbers.length; i++) {
         // updating the total variable's value at every iteration
         total += (numbers[i] / numbers.length);
     }
-
     // returning the value of total
     return total;
 }
+
 // event listener attached to a button click using an anonymous function
 document.getElementById('Average').addEventListener('click', function(){
     // writing out the total into the DOM passing the array of numbers as parameter
-    document.getElementById('result').innerHTML = `${calcAverage(studentMarks)}`;
-});
+    if (studentMarks.length === 0) {
+        document.getElementById('result').innerHTML = `No results to display.`;
+    } else {
+        document.getElementById('result').innerHTML = `The average of student marks is: ${Math.round(calcAverage(studentMarks))}`;
+    }
+})
