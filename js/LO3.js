@@ -37,21 +37,17 @@ document.getElementById('Add').addEventListener('click', function(){
 
 // setting up display button
 document.getElementById('Display').addEventListener('click', function(){
-
-    let nameToFind = ;
-
     // clearing the output
     document.getElementById('result').innerHTML = '';
-
-    if (studentNames.includes(nameToFind)) {
-        console.log(nameToFind)
-        for (let name in studentNames) {
-            document.getElementById('result').innerHTML = `<h3>Student Results</h3>`
-            document.getElementById('result').innerHTML += `Student: ${studentNames[name]} - ${studentMarks[name]} <br>`
-        }
-        
-    } else {
+    // checking if there's data in the array at all
+    if (studentNames.length === 0) {
+        // displaying the error message in case there is no data
         document.getElementById('result').innerHTML = `No results to display.`
+    } else {
+        // if there is data, looping through it and writing it out to the DOM
+        for (i=0; i<studentNames.length; i++) {
+            document.getElementById('result').innerHTML += `Student: ${studentNames[i]} - ${studentMarks[i]} <br>`
+        }
     }
     
 })
@@ -59,16 +55,14 @@ document.getElementById('Display').addEventListener('click', function(){
 
 // setting up clear button
 document.getElementById('Clear').addEventListener('click', function(){
+    // setting the arrays equal to an empty array therefore clearing any data stored in them
     studentNames = [];
     studentMarks = [];
-
+    // clearing the input fields
     document.getElementById('name').value = '';
     document.getElementById('mark').value = '';
-
+    // displaying appropriate message
     document.getElementById('result').innerHTML = `Student records have been cleared.`;
-
-    console.log(studentNames);
-    console.log(studentMarks);
 })
 
 // setting up calcAverage
@@ -83,7 +77,7 @@ function calcAverage(numbers){
     }
 
     // returning the value of total
-    return (total / studentMarks[i]);
+    return total;
 }
 // event listener attached to a button click using an anonymus function
 document.getElementById('Average').addEventListener('click', function(){
