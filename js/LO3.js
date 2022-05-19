@@ -27,7 +27,6 @@ document.getElementById('Add').addEventListener('click', function(){
         // displaying a feedback msg to the user
         document.getElementById('result').innerHTML = ` ${name}'s performance has been recorded!`;
     }
-    
 })
 
 
@@ -76,10 +75,11 @@ function calcAverage(numbers){
 
 // event listener attached to a button click using an anonymous function
 document.getElementById('Average').addEventListener('click', function(){
-    // writing out the total into the DOM passing the array of numbers as parameter
     if (studentMarks.length === 0) {
-        document.getElementById('result').innerHTML = `No results to display. Please record student performance.`;
+        // displaying the error message in case there is no data
+        document.getElementById('result').innerHTML = `Please record student performance in order to calculate average marks.`;
     } else {
+       // writing out the total into the DOM passing the array of numbers as parameter, and rounding the result up, so it doesn't display decimal points
         document.getElementById('result').innerHTML = `The average of student marks is: ${Math.round(calcAverage(studentMarks))}`;
     }
 })
