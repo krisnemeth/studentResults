@@ -26,9 +26,6 @@ document.getElementById('Add').addEventListener('click', function(){
         studentMarks.push(mark);
         // displaying a feedback msg to the user
         document.getElementById('result').innerHTML = ` ${name}'s performance has been recorded!`;
-        // clearing the input
-        document.getElementById('name').value = '';
-        document.getElementById('mark').value = '';
     }
     
 })
@@ -81,7 +78,7 @@ function calcAverage(numbers){
 document.getElementById('Average').addEventListener('click', function(){
     // writing out the total into the DOM passing the array of numbers as parameter
     if (studentMarks.length === 0) {
-        document.getElementById('result').innerHTML = `No results to display.`;
+        document.getElementById('result').innerHTML = `No results to display. Please record student performance.`;
     } else {
         document.getElementById('result').innerHTML = `The average of student marks is: ${Math.round(calcAverage(studentMarks))}`;
     }
